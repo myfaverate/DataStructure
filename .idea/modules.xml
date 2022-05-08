@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DataStructureAlgorithm/DataStructureAlgorithm.iml" filepath="$PROJECT_DIR$/DataStructureAlgorithm/DataStructureAlgorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaMavenProject.iml" filepath="$PROJECT_DIR$/.idea/JavaMavenProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeetcodeProject/LeetcodeProject.iml" filepath="$PROJECT_DIR$/LeetcodeProject/LeetcodeProject.iml" />
+    </modules>
+  </component>
+</project>

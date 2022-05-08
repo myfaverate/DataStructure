@@ -1,0 +1,28 @@
+apple
+banana
+apple
+This quickstart gets you a single-host Kubernetes cluster with Calico in approximately minutes
+Use this quickstart to quickly and easily try Calico features To deploy a cluster suitable for production
+Install Calico on a single-host Kubernetes cluster for testing or development in under 15 minutes
+Install Calico for on-premises deployments to provide networking and network policy
+in either overlay or non-overlay networking modes
+Up for the challenge Calico the hard way takes you under the covers of an end-to-end Calico installation
+Zero Trust Networks are resilient even when attackers manage to breach applications or infrastructure
+They make it hard for attackers to move laterally
+and reconnaissance activities easier to spot
+Organizations that embrace the change control model in this How-To will be able to tightly secure their network without
+imposing a drag on innovation in their applications Security teams can be enablers of business value
+not roadblocks
+quickstart
+approach
+appropriate
+application
+appreciate
+apply
+appeal
+applicable appropriate
+application
+appreciate
+apply
+appeal
+applicable
