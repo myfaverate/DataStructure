@@ -1,9 +1,9 @@
 package huffmantree;
 
 public class Node implements Comparable<Node> {
-    int value;
-    Node left;
-    Node right;
+    int value; 
+    Node left; // 左节点
+    Node right; // 右节点
 
     public Node(int value) {
         this.value = value;
