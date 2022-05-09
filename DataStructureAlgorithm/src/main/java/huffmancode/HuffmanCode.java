@@ -163,6 +163,38 @@ public class HuffmanCode {
         byte[] zipBytes = zip(bytes,huffmanCodes);
         return zipBytes;
     }
+    //完成数据解压
+    //思路：
+    // 1. [-88, -65, -56, -65, -56, -65, -55, 77, -57, 6, -24, -14, -117, -4, -60, -90, 28] => 还原压缩后的二进制 => 还原成i like like
+
+    /**
+     * 将一个byte转成一个二进制的字符串
+     * @param flag  标志是否需要补高位，如果是true表示需要补高位，如果是false表示不补
+     * @param b     传入的byte
+     * @return
+     */
+    public String byteToBinaryString(boolean flag, byte b){
+        int tmp = b; // 将b转成int
+        if (flag){
+            tmp|=256; // 按位或 1 0000 0000 | 0000 0001 => 1 0000 0001
+        }
+        String str = Integer.toBinaryString(tmp);
+        if (flag){
+            return str.substring(str.length()-8);
+        }else {
+            return str;
+        }
+    }
+
+    /**
+     * 编写一个方法，完成对压缩数据的解码
+     * @param huffmanCodes  哈夫曼编码表
+     * @param huffmanBytes  哈夫曼编码的得到字节数组
+     * @return              就是原来字符串对应的数组
+     */
+    public byte[] decode(Map<Byte,String> huffmanCodes,byte[] huffmanBytes){
+        return null;
+    }
 
     public static void main(String[] args) throws IOException {
         HuffmanCode huffmanCode = new HuffmanCode();
