@@ -6,6 +6,8 @@ import java.io.*;
 import java.util.*;
 
 public class HuffmanCode {
+    HashMap<Byte, String> huffmanCodes;
+
     /**
      *
      * @param bytes 接收字节数组
@@ -159,6 +161,7 @@ public class HuffmanCode {
         Node root = createHuffmanTree(nodes);
         //对应的赫夫曼编码(根据赫夫曼树)
         HashMap<Byte, String> huffmanCodes = getCodes(root);
+        this.huffmanCodes=huffmanCodes;
         // 根据生成的赫夫曼编码，压缩得到的赫夫曼编码字节数组
         byte[] zipBytes = zip(bytes,huffmanCodes);
         return zipBytes;
@@ -246,6 +249,103 @@ public class HuffmanCode {
         return bytes;
     }
 
+    /**
+     * 编写一个方法，将文件进行压缩
+     * @param srcFile     被压缩文件的全路径
+     * @param destFile    压缩后的压缩文件存放路径
+     */
+    public void zipFile(String srcFile,String destFile){
+
+        // 创建文件输入流
+        FileInputStream fileInputStream = null;
+        // 创建文件输出流
+        FileOutputStream fileOutputStream =null;
+        ObjectOutputStream objectOutputStream = null;
+        try {
+            fileInputStream = new FileInputStream(srcFile);
+            // 创建一个字节数组
+            byte[] bytes = new byte[fileInputStream.available()];
+            // 读取文件
+            fileInputStream.read(bytes); // 将数据读入到bytes
+
+//            List<Node> nodes = getNodes(bytes);
+//            Node root = createHuffmanTree(nodes);
+//            HashMap<Byte, String> huffmanCodes = getCodes(root);
+
+
+            // 直接对源文件进行压缩
+            byte[] huffmanBytes = huffmanZip(bytes);
+            // 创建文件输出流，存储压缩文件
+            fileOutputStream = new FileOutputStream(destFile);
+            // 创建一个和文件输出流关联的objectOutputStream
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            // 把赫夫曼编码后的字节数组写入压缩文件
+            objectOutputStream.writeObject(huffmanBytes);
+            // 把赫夫曼编码表写入压缩文件，便于以后解压使用
+            objectOutputStream.writeObject(huffmanCodes);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }finally {
+            // 关闭输入流
+            try {
+                fileInputStream.close();
+                objectOutputStream.close();
+                fileOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * 对压缩文件的解压
+     * @param zipFile   准备解压的文件
+     * @param destFile  将文件解压到那个路径
+     */
+    public void unZipFile(String zipFile,String destFile){
+        // 定义文件输入流
+        FileInputStream fileInputStream = null;
+        // 定义对象输入六
+        ObjectInputStream objectInputStream = null;
+        // 定义文件的输出流
+        FileOutputStream fileOutputStream = null;
+        try {
+            // 创建文件输入流
+            fileInputStream = new FileInputStream(zipFile);
+            // 创建一个和fileInputStream关联的对象输入流
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            // 读取bytes数组 huffmanBytes
+            byte[] huffmanBytes = (byte[]) objectInputStream.readObject();
+            // 读取赫夫曼编码
+            Map<Byte,String> huffmanCodes = (Map<Byte, String>) objectInputStream.readObject();
+            // 解码
+            byte[] bytes = decode(huffmanCodes, huffmanBytes);
+            // 将bytes数组写入到目标文件
+            fileOutputStream = new FileOutputStream(destFile);
+            // 写数据到destFile文件
+            fileOutputStream.write(bytes);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                fileOutputStream.close();
+                objectInputStream.close();
+                fileInputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         HuffmanCode huffmanCode = new HuffmanCode();
         File file = new File("D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\huffmanCoding.txt");
@@ -292,5 +392,17 @@ public class HuffmanCode {
         byte[] sourceBytes = huffmanCode.decode(huffmanCodes, bytes);
         System.out.println("解码后的字符串："+new String(sourceBytes));
         System.out.println(sourceBytes.length);
+
+        // 测试压缩文件
+//        String srcFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\huffman.bmp";
+//        String destFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\boy.zip";
+//        huffmanCode.zipFile(srcFile,destFile);
+//        System.out.println("压缩文件成功！");
+
+        // 测试解压文件
+        String srcFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\picture.zip";
+        String destFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\picture.jpg";
+        huffmanCode.unZipFile(srcFile,destFile);
+        System.out.println("解压成功！");
     }
 }
