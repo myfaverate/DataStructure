@@ -79,19 +79,23 @@ public class BinarySortTree {
                 // 删除只有一颗子树的节点
                 // 如果要删除的有左子节点
                 /*
-                        8 parent                    8 parent
-                       /                             \
-                      5 targetNode                    11 targetNode
+                        8 parent                    8 parent                10 parent   会出现parent空指针异常
+                       /                             \                      /
+                      5 targetNode                    11 targetNode        1
                      /                               /
                     4                               9
                 */
                 if (targetNode.left!=null){
-                    // 如果targetNode是parent的左子节点
-                    if (parent.left.value==value){
-                        parent.left=targetNode.left;
+                    if (parent!=null) {
+                        // 如果targetNode是parent的左子节点
+                        if (parent.left.value == value) {
+                            parent.left = targetNode.left;
+                        } else {
+                            // targetNode是parent的右子节点
+                            parent.right = targetNode.left;
+                        }
                     }else {
-                        // targetNode是parent的右子节点
-                        parent.right=targetNode.left;
+                        root = targetNode.left;
                     }
                 }else {
                     // 如果要删除的有右子节点
@@ -103,11 +107,15 @@ public class BinarySortTree {
                             6                                    15
                     */
                     // 如果targetNode是parent的左子节点
-                    if (parent.left.value==value){
-                        parent.left=targetNode.right;
+                    if (parent!=null) {
+                        if (parent.left.value == value) {
+                            parent.left = targetNode.right;
+                        } else {
+                            // 如果targetNode是parent的右子节点
+                            parent.right = targetNode.right;
+                        }
                     }else {
-                        // 如果targetNode是parent的右子节点
-                        parent.right=targetNode.right;
+                        root=targetNode.right;
                     }
                 }
             }
@@ -147,8 +155,15 @@ public class BinarySortTree {
         System.out.println("=======================");
 
         // 测试删除叶子节点
+        binarySortTree.deleteNode(2);
         binarySortTree.deleteNode(3);
-        //binarySortTree.deleteNode(12);
+        binarySortTree.deleteNode(5);
+        binarySortTree.deleteNode(7);
+        binarySortTree.deleteNode(9);
+        binarySortTree.deleteNode(12);
+        binarySortTree.deleteNode(11);
+//        binarySortTree.deleteNode(10);
+//        binarySortTree.deleteNode(1);
         binarySortTree.infixOrder();
     }
 }
