@@ -348,8 +348,8 @@ public class HuffmanCode {
 
     public static void main(String[] args) throws IOException {
         HuffmanCode huffmanCode = new HuffmanCode();
-        File file = new File("D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\huffmanCoding.txt");
-        //File file = new File("D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\composition.txt");
+        File file = new File("D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructure\\src\\main\\resources\\huffmanCoding.txt");
+        //File file = new File("D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructure\\src\\main\\resources\\composition.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
         StringBuffer stringBuffer = new StringBuffer();
         String line;
@@ -394,14 +394,14 @@ public class HuffmanCode {
         System.out.println(sourceBytes.length);
 
         // 测试压缩文件
-//        String srcFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\huffman.bmp";
-//        String destFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\boy.zip";
+//        String srcFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructure\\src\\main\\resources\\huffman.bmp";
+//        String destFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructure\\src\\main\\resources\\boy.zip";
 //        huffmanCode.zipFile(srcFile,destFile);
 //        System.out.println("压缩文件成功！");
 
         // 测试解压文件
-        String srcFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\picture.zip";
-        String destFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\picture.jpg";
+        String srcFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructure\\src\\main\\resources\\picture.zip";
+        String destFile = "D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructure\\src\\main\\resources\\picture.jpg";
         huffmanCode.unZipFile(srcFile,destFile);
         System.out.println("解压成功！");
     }

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="java_webapp_test:war">
+    <output-path>$PROJECT_DIR$/java_webapp_test/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>java_webapp_test</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="java_webapp_test-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="java_webapp_test:war exploded" />
+    </root>
+  </artifact>
+</component>

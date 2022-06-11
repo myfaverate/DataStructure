@@ -51,7 +51,7 @@ public class ArrayToSparseArrayStore {
 
         // 6. 将稀疏数组写入到磁盘
         // 获取文件对象
-        File file = new File("D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\chess.txt");
+        File file = new File("D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructure\\src\\main\\resources\\chess.txt");
         // 文件写入流
         FileWriter writer = new FileWriter(file);
         // 遍历数组写入文件
@@ -66,7 +66,7 @@ public class ArrayToSparseArrayStore {
 
         // 7. 还原原始数组
         // 从磁盘中读取数据
-        //File file = new File("D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructureAlgorithm\\src\\main\\resources\\chess.txt");
+        //File file = new File("D:\\SoftWare\\JetBrains\\Idea\\IdeaProject\\JavaMavenProject\\DataStructure\\src\\main\\resources\\chess.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line;
         List<String> list = new ArrayList<>();
